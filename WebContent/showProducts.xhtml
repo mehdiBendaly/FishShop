@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./szablonAplikacji.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+<h:form id="form"> 
+<p:growl id="growl" showDetail="true"/> 
+
+ <p:dataTable id="table"  value="#{ProductBean.lista}"  var="product" widgetVar="productTable" 
+ emptyMessage="No products found with given criteria" footerText="contains" filterMatchMode="contains">
+
+    <p:column headerText="Id">
+        <h:outputText value="#{product.productid}"/>
+    </p:column>
+ 
+    <p:column headerText="Product Name">
+        <h:outputText value="#{product.productname}" />
+    </p:column>
+ 
+    <p:column headerText="Discontinued">
+        <h:outputText value="#{product.discontinued}" />
+    </p:column>
+        
+    <p:column headerText="quantityperunit">
+        <h:outputText value="#{product.quantityperunit}" />
+    </p:column>
+    
+    <p:column headerText="reorderlevel">
+        <h:outputText value="#{product.reorderlevel}" />
+    </p:column>
+ 
+ 
+     <p:column headerText="supplierid">
+        <h:outputText value="#{product.supplierid}" />
+    </p:column>
+
+    <p:column headerText="unitprice">
+        <h:outputText value="#{product.unitprice}" />
+    </p:column>
+    
+    <p:column headerText="unitsinstock">
+        <h:outputText value="#{product.unitsinstock}" />
+    </p:column>
+    
+    <p:column headerText="unitsonorder">
+        <h:outputText value="#{product.unitsonorder}" />
+    </p:column>
+    
+    
+    <p:column headerText="Edit">
+        <p:commandLink id="edit" value="Edit" 
+                                       action="#{ProductBean.zaladujDoEdycji}" 
+                                       actionListener="#{ProductBean.productListener}">
+                            <f:param name="productID" value="#{product.productid}"/>
+        </p:commandLink>
+    </p:column>
+    
+    <p:column headerText="Delete">
+        <p:commandLink id="delete" value="Delete" 
+                                       action="#{ProductBean.usun}" 
+                                       actionListener="#{ProductBean.productListener}"
+                                       update=":form"
+                                       oncomplete="table.filter();">
+                            <f:param name="productID" value="#{product.productid}"/>
+        </p:commandLink> 
+    </p:column>
+</p:dataTable>
+
+</h:form>
+</ui:define>
+</ui:composition>

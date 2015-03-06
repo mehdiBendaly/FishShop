@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="./szablonAplikacji.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui">
+<ui:define name="content">
+
+<h:form>
+	<p:growl id="growl" showDetail="true"/> 
+    <p:panel id="panel" header="Edit Category" style="margin-bottom:10px;">
+    <h:panelGrid columns="2" columnClasses="column" cellpadding="4">
+        <p:outputLabel for="name" value="Name:" required="true"/>
+        <p:inplace id="name">
+            <p:inputText value="#{CategoryBean.category.categoryname}" required="true"/>
+        </p:inplace>
+        <p:outputLabel for="description" value="Description:" required="true"/>
+        <p:inplace id="description">
+            <p:inputText value="#{CategoryBean.category.description}" required="true"/>
+        </p:inplace>
+       
+
+</h:panelGrid>
+</p:panel>
+<p:commandButton action="#{CategoryBean.edit}" value="Save" update="panel, growl" resetValues="true" styleClass="delta"/>
+</h:form>
+</ui:define>
+</ui:composition>

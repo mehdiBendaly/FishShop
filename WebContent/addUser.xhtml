@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	template="./szablonAplikacji.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml" xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+
+		<h:form>
+			<p:growl id="growl" showDetail="true" />
+			<p:panel id="panel" header="Add User" style="margin-bottom:10px;">
+
+				<table>
+					<tr>
+						<td><p:outputLabel for="firstname" value="Firstname:"
+								required="true" /></td>
+						<td><p:inputText id="firstname"
+								value="#{UzytkownikBean.uzytkownik.uimie}" required="true" /></td>
+					</tr>
+
+					<tr>
+						<td><p:outputLabel for="lastname" value="Lastname:"
+								required="true" /></td>
+						<td><p:inputText id="lastname"
+								value="#{UzytkownikBean.uzytkownik.unazwisko}" required="true" /></td>
+					</tr>
+					
+					<tr>
+						<td><p:outputLabel for="nidfk" value="nidfk:"
+								required="true" /></td>
+						<td><p:inputText id="nidfk"
+								value="#{UzytkownikBean.uzytkownik.nidfk}" /></td>
+					</tr>
+					
+					<tr>
+						<td><p:outputLabel for="ridfk" value="ridfk:"
+								required="true" /></td>
+						<td><p:inputText id="ridfk"
+								value="#{UzytkownikBean.uzytkownik.ridfk}" /></td>
+					</tr>
+					
+					<tr>
+						<td><p:outputLabel for="position" value="Position:"
+								required="true" /></td>
+						<td><p:inputText id="position"
+								value="#{UzytkownikBean.uzytkownik.upatent}" /></td>
+					</tr>
+
+					<tr>
+						<td><p:outputLabel for="address" value="Number:"
+								required="true" /></td>
+						<td><p:inputText id="address"
+								value="#{UzytkownikBean.uzytkownik.unrlokalu}" /></td>
+					</tr>
+
+					<tr>
+						<td><p:outputLabel for="street" value="Street:"
+								required="true" /></td>
+						<td><p:inputText id="street"
+								value="#{UzytkownikBean.uzytkownik.uulica}" /></td>
+					</tr>
+
+					<tr>
+						<td><p:outputLabel for="city" value="City:" required="true" /></td>
+						<td><p:selectOneMenu id="city"
+								value="#{UzytkownikBean.uzytkownik.umiasto}">
+								<f:selectItem itemLabel="Select the city's user" itemValue="" />
+								<f:selectItem itemLabel="Bydgoszcz" itemValue="Bydgoszcz" />
+								<f:selectItem itemLabel="Gdańsk" itemValue="Gdańsk" />
+								<f:selectItem itemLabel="Katowice" itemValue="Katowice" />
+								<f:selectItem itemLabel="Kraków" itemValue="Kraków" />
+								<f:selectItem itemLabel="Lublin" itemValue="Lublin" />
+								<f:selectItem itemLabel="Łódź" itemValue="Łódź" />
+								<f:selectItem itemLabel="Poznań" itemValue="Poznań" />
+								<f:selectItem itemLabel="Szczecin" itemValue="Szczecin" />
+								<f:selectItem itemLabel="Warszawa" itemValue="Warszawa" />
+								<f:selectItem itemLabel="Wrocław" itemValue="Wrocław" />
+							</p:selectOneMenu></td>
+					</tr>
+
+					<tr>
+						<td><p:outputLabel for="pesel" value="Pesel number:"
+								required="true" /></td>
+						<td><p:inputText id="pesel"
+								value="#{UzytkownikBean.uzytkownik.upesel}" /></td>
+					</tr>
+
+					<tr>
+						<td><p:outputLabel for="tel" value="Telephone number :"
+								required="true" /></td>
+						<td><p:inputMask id="tel"
+								value="#{UzytkownikBean.uzytkownik.utelefon}" mask="99 99 999 99"/></td>
+					</tr>
+
+
+					<tr>
+						<td></td>
+						<td><p:commandButton action="#{UzytkownikBean.dodaj}"
+								update="panel, growl" resetValues="true" value="Add"
+								styleClass="delta">
+							</p:commandButton></td>
+					</tr>
+				</table>
+			</p:panel>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

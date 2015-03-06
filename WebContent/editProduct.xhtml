@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="./szablonAplikacji.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:p="http://primefaces.org/ui">
+<ui:define name="content">
+
+<h:form>
+	<p:growl id="growl" showDetail="true"/> 
+    <p:panel id="panel" header="Edit Product" style="margin-bottom:10px;">
+    <h:panelGrid columns="2" columnClasses="column" cellpadding="4">
+        
+        <p:outputLabel for="productName" value="Product name:" required="true"/>
+        <p:inplace id="productName">
+            <p:inputText value="#{ProductBean.product.productname}" required="true"/>
+        </p:inplace>
+               
+        <p:outputLabel for="discounted" value="Discount:" required="true"/>
+        <p:inplace id="discounted">
+            <p:inputText value="#{ProductBean.product.discontinued}" required="true"/>
+        </p:inplace>
+        
+        <p:outputLabel for="quantityperunit" value="Quantityperunit: " required="true"/>
+        <p:inplace id="quantityperunit">
+            <p:inputText value="#{ProductBean.product.quantityperunit}" required="true"/>
+        </p:inplace>
+        
+        <p:outputLabel for="reorderlevel" value="reorderlevel" required="true"/>
+        <p:inplace id="reorderlevel">
+            <p:inputText value="#{ProductBean.product.reorderlevel}" required="true"/>
+        </p:inplace>
+        
+        <p:outputLabel for="supplierid" value="supplierid:" required="true"/>
+        <p:inplace id="supplierid">
+            <p:inputText value="#{ProductBean.product.supplierid}" required="true"/>
+        </p:inplace>
+        
+		<p:outputLabel for="unitprice" value="unitprice: " required="true"/>
+        <p:inplace id="unitprice">
+            <p:inputText value="#{ProductBean.product.unitprice}" required="true"/>
+        </p:inplace>
+
+        <p:outputLabel for="unitsinstock" value="unitsinstock" required="true"/>
+        <p:inplace id="unitsinstock">
+            <p:inputText value="#{ProductBean.product.unitsinstock}" required="true"/>
+        </p:inplace>
+        
+        <p:outputLabel for="unitsonorder" value="unitsonorder" required="true"/>
+        <p:inplace id="unitsonorder">
+            <p:inputText value="#{ProductBean.product.unitsonorder}" required="true"/>
+        </p:inplace>
+
+</h:panelGrid>
+</p:panel>
+<p:commandButton action="#{ProductBean.edytuj}" value="Save" update="panel, growl" resetValues="true" styleClass="delta"/>
+</h:form>
+</ui:define>
+</ui:composition>

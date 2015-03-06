@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf14249971030610" configfile="/FishShop/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="108" y="108" id="pf14249972041601" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" outlinks="pf14249972041603 pf14252125928740" inlinks="pf14249972041603" path="login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="index.xhtml" x="240" y="241" id="pf14252125928741" inlinks="pf14252125928740" path="/index.xhtml"/>
+  <links id="pf14249972041603" target="pf14249972041601" source="pf14249972041601" outcome="failure" fromaction="#{UzytkownikBean.logon}"/>
+  <links id="pf14252125928740" target="pf14252125928741" source="pf14249972041601" outcome="success"/>
+</pageflow:Pageflow>

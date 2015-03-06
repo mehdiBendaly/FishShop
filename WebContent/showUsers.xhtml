@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                template="./szablonAplikacji.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:p="http://primefaces.org/ui">
+    <ui:define name="content">
+<h:form id="form"> 
+<p:growl id="growl" showDetail="true"/> 
+
+ <p:dataTable id="table"  value="#{UzytkownikBean.lista}"  var="user" widgetVar="userTable" 
+ emptyMessage="No users found with given criteria" footerText="contains" filterMatchMode="contains">
+
+    <p:column headerText="User ID">
+        <h:outputText value="#{uzytkownik.id}"/>
+    </p:column>
+ 
+      <p:column headerText="City">
+        <h:outputText value="#{uzytkownik.umiasto}" />
+    </p:column>
+    
+    
+    <p:column headerText="Edit">
+        <p:commandLink id="edit" value="Edit" 
+                                       action="#{ProductBean.zaladujDoEdycji}" 
+                                       actionListener="#{ProductBean.productListener}">
+                            <f:param name="productID" value="#{product.productid}"/>
+        </p:commandLink>
+    </p:column>
+    
+    <p:column headerText="Delete">
+        <p:commandLink id="delete" value="Delete" 
+                                       action="#{ProductBean.usun}" 
+                                       actionListener="#{ProductBean.productListener}"
+                                       update=":form"
+                                       oncomplete="table.filter();">
+                            <f:param name="productID" value="#{product.productid}"/>
+        </p:commandLink> 
+    </p:column>
+</p:dataTable>
+
+</h:form>
+</ui:define>
+</ui:composition>
